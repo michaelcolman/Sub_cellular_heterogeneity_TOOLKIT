@@ -45,6 +45,9 @@ def generate_preview(mainUI):
 
 def save_preview_to_file(field):
 
+	if not os.path.exists('SRFs'):
+		os.mkdir('SRFs')
+
 	X = 40
 	Y = 40
 
@@ -73,6 +76,9 @@ def save_preview_to_file(field):
 
 def produce_preview_graphic(field):
 
+	if not os.path.exists('SRFs'):
+		os.mkdir('SRFs')
+
 	contour_data = (field - np.amin(field)) / (np.amax(field) - np.amin(field))
 
 	fig1 = plt.Figure(facecolor = 'white', figsize = (30, 30), dpi = 100)
@@ -93,6 +99,9 @@ def produce_preview_graphic(field):
 
 def produce_preview_graphic_vario(field):
 
+	if not os.path.exists('SRFs'):
+		os.mkdir('SRFs')
+
 	contour_data = (field - np.amin(field)) / (np.amax(field) - np.amin(field))
 
 	fig1 = plt.Figure(facecolor = 'white', figsize = (10, 10), dpi = 100)
@@ -112,6 +121,9 @@ def produce_preview_graphic_vario(field):
 	plt.Figure.savefig(fig1, fig_name)
 
 def create_SRFs(mainUI):
+
+	if not os.path.exists('SRFs'):
+		os.mkdir('SRFs')
 
 	mainUI.progressBarSRF.setValue(0)
 	name = str(mainUI.EntrySRFName.text())
@@ -177,6 +189,9 @@ def create_SRFs(mainUI):
 	mainUI.progressBarSRF.setValue(100)
 
 def output_SRF(field, name, X, Y, Z):
+
+	if not os.path.exists('SRFs'):
+		os.mkdir('SRFs')
 
 	with open(name + "VTK.vtk", "w") as vtkfile:
 		with open(name + "DAT.dat", "w") as datfile:
